@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": false,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "outDir": "tsDist",
+    "target": "es5",
+    "strictNullChecks": false
+  },
+  "types": ["node"],
+  "include": [
+    "src/**/*",
+    "webpack.config.ts",
+    "node_modules/@types/**/*"
+  ]
+}
