@@ -1,7 +1,7 @@
-import { applyMiddleware, compose, createStore, Store } from 'redux';
+import { applyMiddleware, createStore, Store } from 'redux';
 import thunk from 'redux-thunk';
-import { rootReducer } from './rootReducer';
 import { State } from './models';
+import { rootReducer } from './rootReducer';
 
 declare var module: { hot: any };
 

@@ -1,5 +1,3 @@
-import { List } from 'immutable';
-
 export interface ExampleActionFunction {
   (example: string): ExampleAction;
 }

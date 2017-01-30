@@ -1,11 +1,10 @@
 import path = require('path');
-import url = require('url');
 import express = require('express');
 import webpack = require('webpack');
 import compression = require('compression');
 
-import config from './serverConfig';
 import indexTemplate from './indexTemplate';
+import config from './serverConfig';
 import webpackConfig from './webpack.config';
 
 const app = express();
@@ -31,11 +30,11 @@ if (config.development) {
   app.use('/assets', express.static(path.join(__dirname, '..', 'assets')));
 }
 
-app.get('*', function(request, response) {
+app.get('*', (request, response) => {
   response.send(indexTemplate());
 });
 
-app.listen(config.port || 8080, function(err: Error) {
+app.listen(config.port || 8080, (err: Error) => {
   if (err) {
     // tslint:disable
     console.log(err);

@@ -5,8 +5,8 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import { App } from './views/App';
 import configureStore from './configureStore';
+import { App } from './views/App';
 
 const store = configureStore(undefined);
 

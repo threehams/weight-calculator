@@ -1,3 +1,4 @@
+// tslint:disable
 declare module 'react-router' {
   import * as React from 'react';
 

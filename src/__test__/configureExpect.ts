@@ -1,5 +1,5 @@
-import '../polyfills';
 import 'mocha';
+import '../polyfills';
 
 import * as chai from 'chai';
 import * as chaiImmutable from 'chai-immutable';

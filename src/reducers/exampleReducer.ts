@@ -1,7 +1,6 @@
 import * as Immutable from 'seamless-immutable';
-import { Example } from '../models';
 import { ExampleAction } from '../actions/exampleActions';
-import { Action } from '../models';
+import { Example } from '../models';
 
 type Actions = ExampleAction;
 

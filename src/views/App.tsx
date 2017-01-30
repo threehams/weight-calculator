@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { Match, BrowserRouter } from 'react-router';
 
 import { ExampleApp } from '.';
 
