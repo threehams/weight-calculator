@@ -11,7 +11,7 @@ const ENV = process.env.NODE_ENV || 'development';
 const PLUGINS = {
   development: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '\'development\'',
@@ -19,8 +19,7 @@ const PLUGINS = {
     }),
   ],
   production: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.DedupePlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -43,18 +42,18 @@ export default {
   devtool: DEV_TOOLS[ENV],
   entry: ENTRY_POINTS[ENV],
   module: {
-    loaders: [
+    rules: [
       {
         include: [path.join(__dirname, '..', 'src')],
-        loaders: ['react-hot-loader/webpack', 'ts'],
+        use: ['react-hot-loader/webpack', 'ts-loader'],
         test: /\.(tsx|ts|js)/,
       },
       {
-        loader: 'style-loader!css-loader',
+        use: 'style-loader!css-loader',
         test: /\.css$/,
       },
       {
-        loader: 'json',
+        use: 'json-loader',
         test: /\.json$/,
       },
     ],
@@ -66,7 +65,6 @@ export default {
   },
   plugins: PLUGINS[ENV],
   resolve: {
-    extensions: ['', '.jsx', '.js', '.tsx', '.ts'],
-    root: [path.resolve('client')],
+    extensions: ['.jsx', '.js', '.tsx', '.ts'],
   },
 };
