@@ -1,1 +1,2 @@
-export * from './Example';
+export * from './TextInput';
+export * from './Weight';

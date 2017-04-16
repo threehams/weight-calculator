@@ -2,10 +2,13 @@ import path = require('path');
 import express = require('express');
 import webpack = require('webpack');
 import compression = require('compression');
+import fs = require('mz/fs');
 
 import indexTemplate from './indexTemplate';
 import config from './serverConfig';
 import webpackConfig from './webpack.config';
+
+let script: string;
 
 const app = express();
 
@@ -28,10 +31,11 @@ if (config.development) {
   app.use(compression());
   app.use('/dist', express.static(path.join(__dirname, '..', 'dist')));
   app.use('/assets', express.static(path.join(__dirname, '..', 'assets')));
+  script = fs.readFileSync(path.join('dist', 'bundle.js'), 'utf8');
 }
 
 app.get('*', (request, response) => {
-  response.send(indexTemplate());
+  response.send(indexTemplate(script));
 });
 
 app.listen(config.port || 8080, (err: Error) => {

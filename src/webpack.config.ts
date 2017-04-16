@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
+// import SwPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 
 const ENTRY_POINTS = {
   development: ['webpack-hot-middleware/client', 'react-hot-loader/patch', './src/index.tsx'],
@@ -17,6 +18,18 @@ const PLUGINS = {
         NODE_ENV: '\'development\'',
       },
     }),
+    // new SwPrecacheWebpackPlugin(
+    //   {
+    //     cacheId: 'weight-calculator',
+    //     filename: 'service-worker.js',
+    //     maximumFileSizeToCacheInBytes: 4194304,
+    //     minify: true,
+    //     runtimeCaching: [{
+    //       handler: 'cacheFirst',
+    //       urlPattern: /[.]mp3$/,
+    //     }],
+    //   }
+    // ),
   ],
   production: [
     new webpack.NoEmitOnErrorsPlugin(),
@@ -30,6 +43,18 @@ const PLUGINS = {
         NODE_ENV: '\'production\'',
       },
     }),
+    // new SwPrecacheWebpackPlugin(
+    //   {
+    //     cacheId: 'weight-calculator',
+    //     filename: 'service-worker.js',
+    //     maximumFileSizeToCacheInBytes: 4194304,
+    //     minify: true,
+    //     runtimeCaching: [{
+    //       handler: 'cacheFirst',
+    //       urlPattern: /[.]mp3$/,
+    //     }],
+    //   }
+    // ),
   ],
 };
 
@@ -38,7 +63,7 @@ const DEV_TOOLS = {
   production: 'source-map',
 };
 
-export default {
+const configuration: webpack.Configuration = {
   devtool: DEV_TOOLS[ENV],
   entry: ENTRY_POINTS[ENV],
   module: {
@@ -49,7 +74,7 @@ export default {
         test: /\.(tsx|ts|js)/,
       },
       {
-        use: 'style-loader!css-loader',
+        use: ['style-loader', 'css-loader'],
         test: /\.css$/,
       },
       {
@@ -68,3 +93,5 @@ export default {
     extensions: ['.jsx', '.js', '.tsx', '.ts'],
   },
 };
+
+export default configuration as any;

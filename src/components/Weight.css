@@ -1,0 +1,17 @@
+.weight {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  height: 100%;
+  width: 10%;
+}
+
+.weight-top, .weight-amount {
+  height: 20px;
+  text-align: center;
+}
+
+.weight-bar {
+  background-color: black;
+  width: 100%;
+}
